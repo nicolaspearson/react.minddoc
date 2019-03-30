@@ -21,14 +21,14 @@ export interface HomeProps {
 }
 
 interface State {
-	loading: boolean;
+	initialLoad: boolean;
 }
 
 @inject(StoreNames.PATIENT)
 @observer
 class Home extends React.Component<HomeProps, State> {
 	public state: State = {
-		loading: true
+		initialLoad: true
 	};
 
 	public async componentDidMount() {
@@ -42,6 +42,7 @@ class Home extends React.Component<HomeProps, State> {
 	};
 
 	private handleRefreshClick = async () => {
+		this.setState({ initialLoad: false });
 		await this.loadData();
 	};
 
@@ -50,6 +51,7 @@ class Home extends React.Component<HomeProps, State> {
 			<Page
 				className="Home__Main"
 				useLoader={true}
+				loaderTheme={!this.state.initialLoad ? 'light' : 'dark'}
 				spinning={this.props.patientStore && this.props.patientStore.loading ? true : false}
 			>
 				<Card className="Home__Card">

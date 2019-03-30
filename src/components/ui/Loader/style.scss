@@ -2,7 +2,7 @@
 
 .Loader__Main {
 	display: block;
-	background: $loader-background;
+	background: var(--loader-background);
 	width: 100%;
 	position: absolute;
 	top: 0;
@@ -32,10 +32,10 @@
 		height: 40px;
 		margin: 0 auto;
 		text-indent: -12345px;
-		border-top: 1px solid $color-loader-min;
-		border-right: 1px solid $color-loader-min;
-		border-bottom: 1px solid $color-loader-min;
-		border-left: 1px solid $color-loader-max;
+		border-top: 1px solid var(--loader-border-min);
+		border-right: 1px solid var(--loader-border-min);
+		border-bottom: 1px solid var(--loader-border-min);
+		border-left: 1px solid var(--loader-border-max);
 		border-radius: 50%;
 		z-index: 100001;
 		animation: spinner 600ms infinite linear;
@@ -47,7 +47,7 @@
 		text-align: center;
 		font-size: 12px;
 		letter-spacing: 4px;
-		color: $color-font-loader;
+		color: var(--loader-font-color);
 	}
 
 	&.Loader__Hidden {

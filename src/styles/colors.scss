@@ -13,12 +13,6 @@ $gradient-background: linear-gradient(to bottom, #f28b27, #fa7c3e, #fd6f52, #fb6
 $page-background: $color-light-gray;
 $error-background: $color-light-gray;
 $home-background: $gradient-background;
-$loader-background: $gradient-background;
-
-// Loader
-$color-font-loader: $color-white;
-$color-loader-min: rgba(255, 255, 255, 0.08);
-$color-loader-max: rgba(255, 255, 255, 0.7);
 
 // Font
 $color-placeholder: #adadad;
@@ -32,4 +26,19 @@ $color-default-border: rgba(0, 0, 0, 0.05);
 
 :export {
 	primaryColor: $primary-color;
+}
+
+// Loader
+.Theme__Loader__Light {
+	--loader-background: rgba(0, 0, 0, 0.5);
+	--loader-font-color: #fefefe;
+	--loader-border-min: rgba(255, 255, 255, 0.08);
+	--loader-border-max: rgba(255, 255, 255, 0.7);
+}
+
+.Theme__Loader__Dark {
+	--loader-background: linear-gradient(to bottom, #f28b27, #fa7c3e, #fd6f52, #fb6566, #f45e79);
+	--loader-font-color: #fefefe;
+	--loader-border-min: rgba(255, 255, 255, 0.08);
+	--loader-border-max: rgba(255, 255, 255, 0.7);
 }

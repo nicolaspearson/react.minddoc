@@ -8,13 +8,14 @@ import './style.scss';
 export interface PageProps {
 	children?: any;
 	className?: string;
+	loaderTheme?: 'dark' | 'light';
 	useLoader?: boolean;
 	spinning?: boolean;
 }
 
 const Page = (props: PageProps) => (
 	<div className={classnames('Page__Main', props.className)}>
-		{props.useLoader ? <Loader spinning={props.spinning} /> : ''}
+		{props.useLoader ? <Loader loaderTheme={props.loaderTheme} spinning={props.spinning} /> : ''}
 		{props.children}
 	</div>
 );
