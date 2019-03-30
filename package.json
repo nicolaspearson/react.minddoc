@@ -18,7 +18,8 @@
 		"tslint": "tslint --fix -c tslint.json -p tsconfig.json",
 		"test": "jest --verbose --updateSnapshot",
 		"test:watch": "jest --watchAll --verbose --updateSnapshot",
-		"test:coverage": "jest --verbose --coverage --updateSnapshot"
+		"test:coverage": "npm test -- --coverage",
+		"test:badges": "npm run test:coverage && jest-coverage-badges"
 	},
 	"dependencies": {
 		"classnames": "~2.2.6",
@@ -35,9 +36,9 @@
 	"devDependencies": {
 		"@babel/plugin-proposal-decorators": "~7.4.0",
 		"@craco/craco": "~3.6.0",
+		"@types/classnames": "~2.2.7",
 		"@types/enzyme": "~3.9.1",
 		"@types/enzyme-adapter-react-16": "~1.0.5",
-		"@types/classnames": "~2.2.7",
 		"@types/jest": "~23.3.13",
 		"@types/node": "~11.12.2",
 		"@types/react": "~16.8.10",
@@ -47,6 +48,7 @@
 		"enzyme-adapter-react-16": "~1.11.2",
 		"enzyme-to-json": "~3.3.5",
 		"jest": "~23.6.0",
+		"jest-coverage-badges": "~1.1.2",
 		"prettier": "~1.16.4",
 		"react-scripts": "~2.1.8",
 		"ts-jest": "~24.0.0",

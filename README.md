@@ -1,6 +1,10 @@
 # React MindDoc
 
 [![Build Status](https://travis-ci.org/nicolaspearson/react.minddoc.svg?branch=master)](https://travis-ci.org/nicolaspearson/react.minddoc)
+![Coverage lines](https://raw.githubusercontent.com/nicolaspearson/react.minddoc/master/coverage/badge-lines.svg?sanitize=true)
+![Coverage functions](https://raw.githubusercontent.com/nicolaspearson/react.minddoc/master/coverage/badge-functions.svg?sanitize=true)
+![Coverage branches](https://raw.githubusercontent.com/nicolaspearson/react.minddoc/master/coverage/badge-branches.svg?sanitize=true)
+![Coverage statements](https://raw.githubusercontent.com/nicolaspearson/react.minddoc/master/coverage/badge-statements.svg?sanitize=true)
 
 A demo React app for MindDoc built using Typescript, MobX, SASS, and Webpack. It leverages [Create React App Configuration Override](https://github.com/sharegate/craco) in order to provide custom build functionality.
 
