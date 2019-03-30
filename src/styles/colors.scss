@@ -24,6 +24,10 @@ $color-font-lightest: #f3f3f3;
 // Borders
 $color-default-border: rgba(0, 0, 0, 0.05);
 
+// Status
+$color-online: rgb(28, 182, 36);
+$color-offline: rgb(209, 33, 33);
+
 :export {
 	primaryColor: $primary-color;
 }

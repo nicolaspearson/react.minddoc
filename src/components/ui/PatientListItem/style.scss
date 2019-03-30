@@ -12,6 +12,7 @@
 	.Image__Container {
 		display: grid;
 		grid-template-columns: 1fr;
+		position: relative;
 
 		.Circle__Image {
 			width: 50px;
@@ -20,6 +21,26 @@
 			align-self: center;
 			border-radius: 50%;
 			background: $color-light-gray;
+		}
+
+		.Status__Online {
+			width: 10px;
+			height: 10px;
+			background: $color-online;
+			border-radius: 50%;
+			position: absolute;
+			bottom: 15px;
+			right: 10px;
+		}
+
+		.Status__Offline {
+			width: 10px;
+			height: 10px;
+			background: $color-offline;
+			border-radius: 50%;
+			position: absolute;
+			bottom: 15px;
+			right: 10px;
 		}
 	}
 
@@ -34,7 +55,7 @@
 		padding-left: 6px;
 
 		.Patient__Name {
-			width: 60%;
+			width: 70%;
 			font-size: 14px;
 			text-align: start;
 			text-overflow: ellipsis;
@@ -43,7 +64,7 @@
 		}
 
 		.Last__Message {
-			width: 100%;
+			width: 80%;
 			margin: 0px;
 			color: $color-font-medium;
 			font-size: 14px;
@@ -65,6 +86,14 @@
 		.Time {
 			justify-self: center;
 			align-self: start;
+		}
+
+		.Link__Status {
+			width: 20px;
+			height: 20px;
+			justify-self: center;
+			align-self: center;
+			margin-top: 3px;
 		}
 	}
 }
