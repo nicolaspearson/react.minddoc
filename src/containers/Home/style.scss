@@ -8,14 +8,15 @@
 
 	.Home__Card {
 		display: grid;
-		grid-template-columns: 3fr 7fr;
+		grid-template-columns: 350px 7fr;
 		background-color: $color-white;
 	}
 
 	.Content__Left {
 		display: grid;
-		grid-template-rows: 10% 6% 84%;
+		grid-template-rows: 65px 40px 1fr;
 		height: 100%;
+		width: 100%;
 		border-right: 1px solid $color-default-border;
 
 		.Header__Section {
@@ -50,7 +51,7 @@
 			.Search__Input__Container {
 				text-align: center;
 				display: grid;
-				grid-template-columns: 100%;
+				grid-template-columns: 1fr;
 				height: 100%;
 				background: $color-light-gray;
 
@@ -87,7 +88,7 @@
 					display: grid;
 					height: 80px;
 					z-index: 10;
-					grid-template-columns: 25% 50% 25%;
+					grid-template-columns: 20% 55% 25%;
 					border-bottom: 1px solid $color-default-border;
 					background: $color-white;
 
@@ -98,7 +99,7 @@
 
 					.Image__Container {
 						display: grid;
-						grid-template-columns: 100%;
+						grid-template-columns: 1fr;
 
 						.Image {
 							width: 50px;
@@ -106,7 +107,7 @@
 							justify-self: center;
 							align-self: center;
 							border-radius: 50%;
-							background: $primary-color;
+							background: $color-light-gray;
 						}
 					}
 
@@ -114,14 +115,14 @@
 						display: flex;
 						flex: 1;
 						flex-direction: column;
-						width: 130px;
+						width: 260px;
 						justify-self: start;
 						align-self: center;
 						overflow-wrap: break-word;
 						padding-left: 6px;
 
 						.Patient__Name {
-							width: 120px;
+							width: 60%;
 							font-size: 14px;
 							text-align: start;
 							text-overflow: ellipsis;
@@ -130,7 +131,7 @@
 						}
 
 						.Last__Message {
-							width: 190px;
+							width: 100%;
 							margin: 0px;
 							color: $color-font-medium;
 							font-size: 14px;
@@ -163,6 +164,7 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		height: 100%;
+		background: $color-light-gray;
 
 		.Empty__Section {
 			display: flex;

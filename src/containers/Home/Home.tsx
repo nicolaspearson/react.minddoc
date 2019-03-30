@@ -1,3 +1,4 @@
+import { inject, observer } from 'mobx-react';
 import React from 'react';
 
 import Logo from '@components/icon/Logo';
@@ -5,44 +6,68 @@ import Page from '@components/structural/Page';
 import Button from '@components/ui/Button';
 import Card from '@components/ui/Card';
 
+import { StoreNames } from '@enums/StoreNames';
+
+import { PatientStore } from '@store/PatientStore';
+
 import overflowImage from '@assets/images/svg/overflow.svg';
 import placeholderImage from '@assets/images/svg/placeholder.svg';
 import refreshImage from '@assets/images/svg/refresh.svg';
 
 import './style.scss';
 
+export interface HomeProps {
+	patientStore?: PatientStore;
+}
+
 interface State {
 	loading: boolean;
 }
 
-class Home extends React.Component<{}, State> {
+@inject(StoreNames.PATIENT)
+@observer
+class Home extends React.Component<HomeProps, State> {
 	public state: State = {
 		loading: true
 	};
 
-	public componentDidMount() {
-		setTimeout(() => {
-			this.setState({
-				loading: false
-			});
-		}, 1000);
+	public async componentDidMount() {
+		await this.loadData();
 	}
+
+	private loadData = async () => {
+		if (this.props.patientStore) {
+			await this.props.patientStore.fetchPatientStatusList();
+		}
+	};
+
+	private handleRefreshClick = async () => {
+		await this.loadData();
+	};
 
 	public render() {
 		return (
-			<Page className="Home__Main" useLoader={true} spinning={this.state.loading}>
+			<Page
+				className="Home__Main"
+				useLoader={true}
+				spinning={this.props.patientStore && this.props.patientStore.loading ? true : false}
+			>
 				<Card className="Home__Card">
 					<section className="Content__Left">
 						<section className="Header__Section">
 							<div className="Header__Content__Container">
 								<Logo className="Header__Logo" />
-								<img className="Refresh__Button" src={refreshImage} />
+								<img
+									className="Refresh__Button"
+									src={refreshImage}
+									onClick={this.handleRefreshClick}
+								/>
 								<img className="Overflow__Button" src={overflowImage} />
 							</div>
 						</section>
 						<section className="Search__Section">
 							<div className="Search__Input__Container">
-								<input className="Search__Input" type="text" placeholder="Search for a user" />
+								<input className="Search__Input" type="text" placeholder="Search for a patient" />
 							</div>
 						</section>
 						<section className="Patient__Section">
@@ -75,7 +100,9 @@ class Home extends React.Component<{}, State> {
 								hand side to view their profile, and messages.
 							</h2>
 							<br />
-							<Button className="Empty__Button">Got it!</Button>
+							<Button className="Empty__Button" primary={true}>
+								Got it!
+							</Button>
 						</section>
 					</section>
 				</Card>

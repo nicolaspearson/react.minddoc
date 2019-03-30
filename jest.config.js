@@ -29,6 +29,7 @@ module.exports = {
 
 	// Map aliases
 	moduleNameMapper: {
+		'^@api(.*)$': '<rootDir>/src/api$1',
 		'^@assets(.*)$': '<rootDir>/src/assets$1',
 		'^@components(.*)$': '<rootDir>/src/components$1',
 		'^@containers(.*)$': '<rootDir>/src/containers$1',

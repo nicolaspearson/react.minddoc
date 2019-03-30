@@ -37,7 +37,7 @@ export class Main extends React.Component {
 		return (
 			<Provider
 				store={this.store}
-				flagStore={this.store.flagStore}
+				patientStore={this.store.patientStore}
 				routerStore={this.store.routerStore}
 			>
 				<ErrorBoundary>{this.renderRoute()}</ErrorBoundary>

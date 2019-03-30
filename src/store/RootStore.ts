@@ -1,12 +1,17 @@
-import { FlagStore } from '@store/FlagStore';
+import { MindDocApi } from '@api/MindDocApi';
+import { PatientStore } from '@store/PatientStore';
 import { RouterStore } from '@store/RouterStore';
 
 export class RootStore {
-	public flagStore: FlagStore;
+	public mindDocApi: MindDocApi;
+
+	public patientStore: PatientStore;
 	public routerStore: RouterStore;
 
 	constructor() {
-		this.flagStore = new FlagStore(this);
+		this.mindDocApi = new MindDocApi();
+
+		this.patientStore = new PatientStore(this);
 		this.routerStore = new RouterStore(this);
 	}
 }

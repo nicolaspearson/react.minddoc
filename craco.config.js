@@ -7,8 +7,19 @@ module.exports = {
 			['@babel/plugin-proposal-decorators', { legacy: true }] // MobX
 		]
 	},
+	devServer: {
+		// Redirect request when using the dev server in order to avoid CORS issues
+		proxy: {
+			'/api/v1/**': {
+				target: 'https://takeshi.minddoc.com',
+				secure: false,
+				changeOrigin: true
+			}
+		}
+	},
 	webpack: {
 		alias: {
+			'@api': path.resolve(__dirname, 'src/api'),
 			'@assets': path.resolve(__dirname, 'src/assets'),
 			'@components': path.resolve(__dirname, 'src/components'),
 			'@containers': path.resolve(__dirname, 'src/containers'),
