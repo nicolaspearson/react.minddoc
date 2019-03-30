@@ -19,4 +19,6 @@ export interface Patient {
 	messages: string[];
 	parsedMessages?: Message[];
 	lastMessage?: Message;
+	lastReadMessage?: Message;
+	lastUnreadMessage?: Message;
 }

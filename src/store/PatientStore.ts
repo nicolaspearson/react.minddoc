@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Message } from '@models/Message';
 import { Patient } from '@models/Patient';
 import { RootStore } from '@store/RootStore';
+import { compareBoolean, compareMessageDates, compareString } from '@utils/SortUtils';
 
 export class PatientStore {
 	public rootStore: RootStore;
@@ -66,7 +67,7 @@ export class PatientStore {
 		this.loading = true;
 		try {
 			const res: Patient[] = yield this.rootStore.mindDocApi.getPatientStatusList();
-			// Iterate of each patient to parse the messages
+			// Iterate over each patient to parse the messages
 			res.map((patient) => {
 				patient.parsedMessages = [];
 				// Iterate of each message
@@ -78,15 +79,30 @@ export class PatientStore {
 					patient.parsedMessages.push(message);
 				}
 				// Sort the messages from newest to oldest
-				patient.parsedMessages.sort(
-					(a, b) => b.formattedDate.getTime() - a.formattedDate.getTime()
-				);
+				patient.parsedMessages.sort((a, b) => compareMessageDates(a, b));
 				// Assign the "lastMessage"
 				patient.lastMessage =
 					patient.parsedMessages.length > 0 ? patient.parsedMessages[0] : undefined;
+				// Assign the "lastReadMessage"
+				patient.lastReadMessage = patient.parsedMessages.find((item) => item.read === true);
+				// Assign the "lastUnreadMessage"
+				patient.lastUnreadMessage = patient.parsedMessages.find((item) => item.read !== true);
 				return patient;
 			});
-			// We need to parse the messages
+
+			// Sort the patients
+			res.sort((a, b) => {
+				return (
+					// Patients with newest unread messages will always be shown first
+					compareMessageDates(a.lastUnreadMessage, b.lastUnreadMessage) ||
+					// Patients with newest read messages
+					compareMessageDates(a.lastReadMessage, b.lastReadMessage) ||
+					// Patients that are linked will be shown before unlinked ones
+					compareBoolean(a.linked, b.linked) ||
+					// Alphabetical order (firstName + lastName) for the rest
+					compareString(a.firstName + a.lastName, b.firstName + b.lastName)
+				);
+			});
 			this.handleResponse(res, true);
 		} catch (error) {
 			this.handleError(error);

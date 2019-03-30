@@ -1,6 +1,6 @@
 export interface Message {
 	text: string;
-	read: string;
+	read: boolean;
 	date: string;
 	formattedDate: Date;
 }
