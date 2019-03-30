@@ -3,6 +3,7 @@ import React from 'react';
 
 import Logo from '@components/icon/Logo';
 import Button from '@components/ui/Button';
+import Card from '@components/ui/Card';
 import { RouteNames } from '@enums/RouteNames';
 import { RouterStore } from '@store/RouterStore';
 
@@ -49,7 +50,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
 		if (this.state.hasError) {
 			return (
 				<section className="Error__Main">
-					<section className="Error__Card">
+					<Card>
 						<Logo />
 						<h1 className="Error__Message">
 							Oh no!
@@ -63,7 +64,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
 						<Button className="CTA__Button" onClick={this.onHomeClick}>
 							Take me home
 						</Button>
-					</section>
+					</Card>
 				</section>
 			);
 		}

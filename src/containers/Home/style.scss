@@ -1,0 +1,155 @@
+@import '@styles/colors.scss';
+
+.Home__Main {
+	display: flex;
+	flex: 1;
+	height: 100vh;
+	background: $home-background;
+
+	.Home__Card {
+		display: grid;
+		grid-template-columns: 3fr 7fr;
+		background-color: $color-white;
+	}
+
+	.Content__Left {
+		display: grid;
+		grid-template-rows: 10% 6% 84%;
+		height: 100%;
+		border-right: 1px solid $color-default-border;
+
+		.Header__Section {
+			border-bottom: 1px solid $color-default-border;
+
+			.Header__Content__Container {
+				height: 100%;
+				display: grid;
+				grid-template-columns: 70% 15% 15%;
+				background: $color-white;
+
+				.Header__Logo {
+					justify-self: start;
+					align-self: center;
+				}
+
+				.Refresh__Button {
+					justify-self: center;
+					align-self: center;
+				}
+
+				.Overflow__Button {
+					justify-self: center;
+					align-self: center;
+				}
+			}
+		}
+
+		.Search__Section {
+			border-bottom: 1px solid $color-default-border;
+
+			.Search__Input__Container {
+				text-align: center;
+				display: grid;
+				grid-template-columns: 100%;
+				height: 100%;
+				background: $color-light-gray;
+
+				.Search__Input {
+					width: 85%;
+					height: 70%;
+					justify-self: center;
+					text-align: left;
+					color: $color-font-medium;
+					align-self: center;
+					border-width: 0px;
+					border-image: initial;
+					border-radius: 18px;
+					padding: 0px 15px;
+					background: $color-white;
+					outline: none;
+
+					&::placeholder {
+						color: $color-placeholder;
+					}
+				}
+			}
+		}
+
+		.Profile__Section {
+			display: block;
+		}
+	}
+
+	.Content__Right {
+		display: grid;
+		grid-template-columns: 1fr;
+		height: 100%;
+
+		.Empty__Section {
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+			justify-content: center;
+			height: 100%;
+
+			.Empty__Message {
+				color: $secondary-color;
+				font-size: 28px;
+				font-weight: 700;
+				line-height: 1.5em;
+				margin: 10px;
+			}
+
+			.Empty__Detail {
+				color: $color-font-medium;
+				line-height: 24px;
+				font-size: 16px;
+				font-weight: 400;
+			}
+
+			.Logo__Main {
+				height: 200px;
+				width: 100%;
+				margin: 0;
+				padding: 10px;
+			}
+
+			.Empty__Button {
+				min-width: 120px;
+				height: 40px;
+				padding-left: 30px;
+				padding-right: 30px;
+				font-size: 14px;
+				font-weight: normal;
+				align-self: center;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.Home__Main {
+		background: $color-white;
+
+		.Home__Card {
+			margin: 0px;
+			background-color: $color-white;
+		}
+
+		.Content__Right {
+			display: grid;
+			grid-template-columns: 1fr;
+			height: 100%;
+
+			.Empty__Section {
+				.Empty__Message {
+					font-size: 18px;
+				}
+
+				.Empty__Detail {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}

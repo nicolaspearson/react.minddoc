@@ -2,7 +2,7 @@ import { action } from 'mobx';
 import React from 'react';
 import { Route, State } from 'router5';
 
-import App from '@containers/App';
+import Home from '@containers/Home';
 import { RouteNames } from '@enums/RouteNames';
 import { RouterStore } from '@store/RouterStore';
 
@@ -35,7 +35,7 @@ export const HomeRoute: AdvRoute = {
 		name: HomeRoute.name
 	}),
 
-	component: () => <App />,
+	component: () => <Home />,
 
 	activate: action((store: RouterStore) => {
 		store.activatedRouteName(HomeRoute.name);

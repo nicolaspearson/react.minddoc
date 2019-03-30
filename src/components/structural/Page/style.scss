@@ -1,11 +1,11 @@
 @import '@styles/colors.scss';
 
 .Page__Main {
-	height: 100%;
-	background: $main-page-background;
+	height: 100vh;
+	background: $page-background;
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 800px) {
 	.Page__Main {
 		background: $color-white;
 	}

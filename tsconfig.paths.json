@@ -8,7 +8,6 @@
 			"@enums/*": ["src/enums/*"],
 			"@logger": ["src/logger/index"],
 			"@models/*": ["src/models/*"],
-			"@pages/*": ["src/pages/*"],
 			"@router/*": ["src/router/*"],
 			"@store/*": ["src/store/*"],
 			"@styles/*": ["src/styles/*"],

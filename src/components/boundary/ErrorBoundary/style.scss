@@ -4,31 +4,21 @@
 	display: flex;
 	flex: 1;
 	background-color: $error-background;
-	height: calc(100vh - 0px);
-
-	.Error__Card {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		text-align: center;
-		padding: 0px;
-		background-color: $color-white;
-		margin: 20px;
-	}
+	height: 100vh;
 
 	.Error__Message {
 		color: $secondary-color;
 		font-size: 20px;
 		font-weight: 700;
 		line-height: 1.5em;
+		margin: 10px;
 	}
 
 	.Error__Detail {
 		color: $color-font-medium;
+		line-height: 24px;
 		font-size: 16px;
+		font-weight: 400;
 	}
 
 	.Logo__Main {
@@ -45,14 +35,13 @@
 		padding-right: 30px;
 		font-size: 14px;
 		font-weight: normal;
+		align-self: center;
 	}
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 800px) {
 	.Error__Main {
-		.Error__Card {
-			background-color: $color-transparent;
-		}
+		background-color: $color-white;
 
 		.Error__Message {
 			font-size: 18px;

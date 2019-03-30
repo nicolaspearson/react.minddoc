@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React from 'react';
 
 import logoImage from '@assets/images/svg/logo.svg';
@@ -5,13 +6,14 @@ import logoImage from '@assets/images/svg/logo.svg';
 import './style.scss';
 
 export interface LogoProps {
-	width?: string;
+	className?: string;
 	height?: string;
+	width?: string;
 }
 
 const Logo = (props: LogoProps) => (
 	<img
-		className="Logo__Main"
+		className={classnames('Logo__Main', props.className)}
 		style={{ width: props.width, height: props.height }}
 		src={logoImage}
 	/>
