@@ -1,9 +1,8 @@
 import moment from 'moment';
 import React from 'react';
 
+import ImageWrapper from '@components/ui/ImageWrapper';
 import { Patient } from '@models/Patient';
-
-import placeholderImage from '@assets/images/svg/placeholder.svg';
 
 import './style.scss';
 
@@ -16,7 +15,12 @@ const PatientListItem = (props: PatientListItemProps) => {
 	return (
 		<div className="PatientListItem__Main">
 			<div className="Image__Container">
-				<img className="Image" src={placeholderImage} />
+				<ImageWrapper
+					className="Circle__Image"
+					alt={`${patient.firstName} ${patient.lastName}`}
+					render={true}
+					src={patient.profilePicture}
+				/>
 			</div>
 			<div className="Text__Container">
 				<label className="Patient__Name">{patient.firstName}</label>
