@@ -1,0 +1,32 @@
+@import '@styles/colors.scss';
+@import '@styles/functions.scss';
+
+.Button__Main {
+	display: inline-block;
+	cursor: pointer;
+	width: 11rem;
+	padding: 0.5rem 0;
+	margin: 0.5rem;
+	background: transparent;
+	color: $primary-color;
+	border: 1px solid $primary-color;
+	border-radius: 3px;
+	font-size: 14px;
+
+	&:hover {
+		border: 1px solid transparent;
+		box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.2);
+		background: tint($primary-color, 80);
+	}
+}
+
+.Primary__Button {
+	background: $primary-color;
+	color: white;
+
+	&:hover {
+		border: 1px solid transparent;
+		box-shadow: inset 10000px 0 0 rgba(255, 255, 255, 0.2);
+		background: tint($primary-color, 10);
+	}
+}

@@ -1,0 +1,15 @@
+.Nav__Main {
+	ul {
+		padding-left: 10px;
+	}
+
+	.Nav__Container {
+		display: flex;
+		list-style: none;
+		margin-bottom: 0;
+	}
+
+	.Nav__Stack {
+		flex-direction: column;
+	}
+}

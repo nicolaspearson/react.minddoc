@@ -1,0 +1,65 @@
+@import '@styles/colors.scss';
+
+.Error__Main {
+	display: flex;
+	flex: 1;
+	background-color: $error-background;
+	height: calc(100vh - 0px);
+
+	.Error__Card {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		text-align: center;
+		padding: 0px;
+		background-color: $color-white;
+		margin: 20px;
+	}
+
+	.Error__Message {
+		color: $secondary-color;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1.5em;
+	}
+
+	.Error__Detail {
+		color: $color-font-medium;
+		font-size: 16px;
+	}
+
+	.Logo__Main {
+		height: 200px;
+		width: 200px;
+		margin: 0;
+		padding: 10px;
+	}
+
+	.CTA__Button {
+		min-width: 120px;
+		height: 40px;
+		padding-left: 30px;
+		padding-right: 30px;
+		font-size: 14px;
+		font-weight: normal;
+	}
+}
+
+@media screen and (max-width: 840px) {
+	.Error__Main {
+		.Error__Card {
+			background-color: $color-transparent;
+		}
+
+		.Error__Message {
+			font-size: 18px;
+		}
+
+		.Error__Detail {
+			font-size: 14px;
+		}
+	}
+}
