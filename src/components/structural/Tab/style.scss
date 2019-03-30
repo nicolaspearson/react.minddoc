@@ -1,0 +1,24 @@
+@import '@styles/colors.scss';
+@import '@styles/functions.scss';
+
+.Tab__List__Item {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	height: 65px;
+	font-size: 14px;
+	border-bottom: 2px solid $color-transparent;
+
+	&:hover {
+		background: tint($primary-color, 80);
+		color: $primary-color;
+		cursor: pointer;
+	}
+}
+
+.Tab__Item__Active {
+	border-bottom: 2px solid $primary-color;
+	background: $color-white;
+	color: $primary-color;
+}

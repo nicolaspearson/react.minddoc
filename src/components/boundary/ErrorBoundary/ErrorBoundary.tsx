@@ -9,7 +9,7 @@ import { RouterStore } from '@store/RouterStore';
 
 import './style.scss';
 export interface ErrorBoundaryProps {
-	children?: any;
+	children?: React.ReactNode;
 	routerStore?: RouterStore;
 }
 

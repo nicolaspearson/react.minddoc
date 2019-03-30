@@ -6,7 +6,7 @@ import Loader from '@components/ui/Loader';
 import './style.scss';
 
 export interface PageProps {
-	children?: any;
+	children?: React.ReactNode;
 	className?: string;
 	loaderTheme?: 'dark' | 'light';
 	useLoader?: boolean;

@@ -4,7 +4,7 @@ import React from 'react';
 import './style.scss';
 
 export interface CardProps {
-	children?: any;
+	children?: React.ReactNode;
 	className?: string;
 }
 

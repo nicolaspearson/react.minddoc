@@ -3,16 +3,19 @@ import React from 'react';
 
 import Logo from '@components/icon/Logo';
 import Page from '@components/structural/Page';
+import Tab from '@components/structural/Tab';
+import Tabs from '@components/structural/Tabs';
 import Button from '@components/ui/Button';
 import Card from '@components/ui/Card';
 import PatientListItem from '@components/ui/PatientListItem';
 
 import { StoreNames } from '@enums/StoreNames';
 
+import { Patient } from '@models/Patient';
+
 import { PatientStore } from '@store/PatientStore';
 
 import overflowImage from '@assets/images/svg/overflow.svg';
-
 import refreshImage from '@assets/images/svg/refresh.svg';
 
 import './style.scss';
@@ -24,6 +27,7 @@ export interface HomeProps {
 interface State {
 	initialLoad: boolean;
 	searchInputValue: string;
+	selectedPatient?: Patient;
 }
 
 @inject(StoreNames.PATIENT)
@@ -31,7 +35,8 @@ interface State {
 class Home extends React.Component<HomeProps, State> {
 	public state: State = {
 		initialLoad: true,
-		searchInputValue: ''
+		searchInputValue: '',
+		selectedPatient: undefined
 	};
 
 	public async componentDidMount() {
@@ -53,6 +58,16 @@ class Home extends React.Component<HomeProps, State> {
 		this.setState({ searchInputValue: event.target.value });
 	};
 
+	private handlePatientSelected = (patient: Patient) => {
+		this.setState({ selectedPatient: patient });
+	};
+
+	private selectFirstPatient = () => {
+		if (this.props.patientStore && this.props.patientStore.dataList.length > 0) {
+			this.handlePatientSelected(this.props.patientStore.dataList[0]);
+		}
+	};
+
 	private renderPatientListItems = (): JSX.Element[] => {
 		const items: JSX.Element[] = [];
 		if (this.props.patientStore) {
@@ -63,7 +78,19 @@ class Home extends React.Component<HomeProps, State> {
 			);
 			for (const patient of filteredPatients) {
 				index++;
-				const item: JSX.Element = <PatientListItem key={index} patient={patient} />;
+				const item: JSX.Element = (
+					<PatientListItem
+						key={index}
+						patient={patient}
+						onClick={this.handlePatientSelected}
+						isActive={
+							this.state.selectedPatient &&
+							this.state.selectedPatient.insuranceNumber === patient.insuranceNumber
+								? true
+								: false
+						}
+					/>
+				);
 				items.push(item);
 			}
 		}
@@ -72,7 +99,7 @@ class Home extends React.Component<HomeProps, State> {
 
 	public render() {
 		const patientListItems: JSX.Element[] = [];
-		if (this.props.patientStore && !this.props.patientStore.loading) {
+		if (this.props.patientStore) {
 			patientListItems.push(...this.renderPatientListItems());
 		}
 		return (
@@ -111,19 +138,28 @@ class Home extends React.Component<HomeProps, State> {
 						</section>
 					</section>
 					<section className="Content__Right">
-						<section className="Empty__Section">
-							<Logo />
-							<h1 className="Empty__Message">Welcome</h1>
-							<h2 className="Empty__Detail">
-								Select a patient from the section on the left
+						{!this.state.selectedPatient ? (
+							<section className="Empty__Section">
+								<Logo />
+								<h1 className="Empty__Message">Welcome</h1>
+								<h2 className="Empty__Detail">
+									Select a patient from the section on the left
+									<br />
+									hand side to view their profile, and messages.
+								</h2>
 								<br />
-								hand side to view their profile, and messages.
-							</h2>
-							<br />
-							<Button className="Empty__Button" primary={true}>
-								Got it!
-							</Button>
-						</section>
+								<Button className="Empty__Button" primary={true} onClick={this.selectFirstPatient}>
+									Got it!
+								</Button>
+							</section>
+						) : (
+							<section>
+								<Tabs>
+									<Tab label="Profile">Show Profile Details</Tab>
+									<Tab label="Messages">Show Messages</Tab>
+								</Tabs>
+							</section>
+						)}
 					</section>
 				</Card>
 			</Page>

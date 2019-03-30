@@ -9,11 +9,6 @@
 	border-bottom: 1px solid $color-default-border;
 	background: $color-white;
 
-	&:hover {
-		background: $color-light-gray;
-		cursor: 'pointer';
-	}
-
 	.Image__Container {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -72,4 +67,11 @@
 			align-self: start;
 		}
 	}
+}
+
+.Patient__Selected,
+.PatientListItem__Main:hover,
+.PatientListItem__Main:hover * {
+	background: $color-light-gray;
+	cursor: pointer;
 }

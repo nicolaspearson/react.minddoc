@@ -27,9 +27,11 @@ export class PatientStore {
 	}
 
 	@action
-	public initState() {
+	public initState(clearList?: boolean) {
 		this.data = undefined;
-		this.dataList = [];
+		if (clearList) {
+			this.dataList = [];
+		}
 		this.errors = undefined;
 		this.loading = false;
 	}

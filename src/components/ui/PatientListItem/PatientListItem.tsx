@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import moment from 'moment';
 import React from 'react';
 
@@ -7,13 +8,18 @@ import { Patient } from '@models/Patient';
 import './style.scss';
 
 export interface PatientListItemProps {
+	isActive: boolean;
+	onClick: (patient: Patient) => void;
 	patient: Patient;
 }
 
 const PatientListItem = (props: PatientListItemProps) => {
 	const { patient } = props;
 	return (
-		<div className="PatientListItem__Main">
+		<div
+			className={classnames('PatientListItem__Main', { Patient__Selected: props.isActive })}
+			onClick={() => props.onClick(patient)}
+		>
 			<div className="Image__Container">
 				<ImageWrapper
 					className="Circle__Image"

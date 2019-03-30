@@ -1,0 +1,22 @@
+@import '@styles/colors.scss';
+
+.Tabs__Main {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+
+	.Tab__List {
+		display: flex;
+		border-bottom: 1px solid $color-default-border;
+		padding: 0;
+		margin: 0;
+	}
+
+	.Tab__Content {
+		height: 100%;
+		padding-top: 50px;
+		background: $color-white;
+	}
+}
