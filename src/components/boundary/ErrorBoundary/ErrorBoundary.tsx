@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react';
-import * as React from 'react';
+import React from 'react';
 
 import Logo from '@components/icon/Logo';
 import Button from '@components/ui/Button';
@@ -25,6 +25,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
 
 	constructor(props: ErrorBoundaryProps, context: any) {
 		super(props, context);
+		this.onHomeClick = this.onHomeClick.bind(this);
 	}
 
 	public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
@@ -33,14 +34,16 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
 		});
 	}
 
-	private onHomeClick = () => {
+	public onHomeClick() {
 		if (this.props.routerStore) {
 			this.props.routerStore.navigate(
 				{ name: RouteNames.HOME },
 				{ force: true, reload: true, replace: true }
 			);
+			return true;
 		}
-	};
+		return false;
+	}
 
 	public render() {
 		if (this.state.hasError) {

@@ -2,7 +2,7 @@ import 'typeface-lato';
 
 import { configure } from 'mobx';
 import { observer, Provider } from 'mobx-react';
-import * as React from 'react';
+import React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import ErrorBoundary from '@components/boundary/ErrorBoundary';

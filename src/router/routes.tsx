@@ -1,5 +1,5 @@
 import { action } from 'mobx';
-import * as React from 'react';
+import React from 'react';
 import { Route, State } from 'router5';
 
 import App from '@containers/App';

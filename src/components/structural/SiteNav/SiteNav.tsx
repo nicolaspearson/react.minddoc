@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import Nav from '@components/structural/Nav';
 import RouterLink from '@components/structural/RouterLink';

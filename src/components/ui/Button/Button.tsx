@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import * as React from 'react';
+import React from 'react';
 
 import './style.scss';
 
@@ -8,7 +8,7 @@ export interface ButtonProps {
 	className?: string;
 	primary?: boolean;
 	style?: React.CSSProperties;
-	onClick?: (event: React.FormEvent) => void;
+	onClick?: (event: React.MouseEvent) => void;
 }
 
 const Button = (props: ButtonProps) => {

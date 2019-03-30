@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react';
-import * as React from 'react';
+import React from 'react';
 
 import Logo from '@components/icon/Logo';
 import RouterLink from '@components/structural/RouterLink';

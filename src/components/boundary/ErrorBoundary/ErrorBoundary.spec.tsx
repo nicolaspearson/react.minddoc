@@ -1,13 +1,11 @@
 import * as Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import * as React from 'react';
+import React from 'react';
 
 import { RootStore } from '@store/RootStore';
 import { RouterStore } from '@store/RouterStore';
 
 import ErrorBoundary from './ErrorBoundary';
-
-import { observable } from 'mobx';
 
 Enzyme.configure({
 	adapter: new Adapter()
@@ -23,6 +21,10 @@ describe('ErrorBoundary component', () => {
 	beforeEach(() => {
 		store = new RootStore();
 		routerStore = new RouterStore(store);
+	});
+
+	afterEach(() => {
+		jest.clearAllMocks();
 	});
 
 	it('renders', () => {
@@ -50,7 +52,6 @@ describe('ErrorBoundary component', () => {
 				<div />
 			</ErrorBoundary>
 		);
-
 		expect(wrapper.find('ErrorBoundary').children().length).toEqual(1);
 	});
 
