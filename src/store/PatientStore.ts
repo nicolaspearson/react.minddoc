@@ -1,5 +1,7 @@
 import { action, flow, observable } from 'mobx';
+import moment from 'moment';
 
+import { Message } from '@models/Message';
 import { Patient } from '@models/Patient';
 import { RootStore } from '@store/RootStore';
 
@@ -62,6 +64,27 @@ export class PatientStore {
 		this.loading = true;
 		try {
 			const res: Patient[] = yield this.rootStore.mindDocApi.getPatientStatusList();
+			// Iterate of each patient to parse the messages
+			res.map((patient) => {
+				patient.parsedMessages = [];
+				// Iterate of each message
+				for (const raw of patient.messages) {
+					// Parse the message
+					const message: Message = { ...JSON.parse(raw) };
+					// Create a formatted that we can use
+					message.formattedDate = moment(message.date).toDate();
+					patient.parsedMessages.push(message);
+				}
+				// Sort the messages from newest to oldest
+				patient.parsedMessages.sort(
+					(a, b) => b.formattedDate.getTime() - a.formattedDate.getTime()
+				);
+				// Assign the "lastMessage"
+				patient.lastMessage =
+					patient.parsedMessages.length > 0 ? patient.parsedMessages[0] : undefined;
+				return patient;
+			});
+			// We need to parse the messages
 			this.handleResponse(res, true);
 		} catch (error) {
 			this.handleError(error);

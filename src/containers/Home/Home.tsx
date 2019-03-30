@@ -5,13 +5,14 @@ import Logo from '@components/icon/Logo';
 import Page from '@components/structural/Page';
 import Button from '@components/ui/Button';
 import Card from '@components/ui/Card';
+import PatientListItem from '@components/ui/PatientListItem';
 
 import { StoreNames } from '@enums/StoreNames';
 
 import { PatientStore } from '@store/PatientStore';
 
 import overflowImage from '@assets/images/svg/overflow.svg';
-import placeholderImage from '@assets/images/svg/placeholder.svg';
+
 import refreshImage from '@assets/images/svg/refresh.svg';
 
 import './style.scss';
@@ -46,7 +47,24 @@ class Home extends React.Component<HomeProps, State> {
 		await this.loadData();
 	};
 
+	private renderPatientListItems = (): JSX.Element[] => {
+		const items: JSX.Element[] = [];
+		if (this.props.patientStore) {
+			let index: number = 0;
+			for (const patient of this.props.patientStore.dataList) {
+				index++;
+				const item: JSX.Element = <PatientListItem key={index} patient={patient} />;
+				items.push(item);
+			}
+		}
+		return items;
+	};
+
 	public render() {
+		const patientListItems: JSX.Element[] = [];
+		if (this.props.patientStore && !this.props.patientStore.loading) {
+			patientListItems.push(...this.renderPatientListItems());
+		}
 		return (
 			<Page
 				className="Home__Main"
@@ -72,24 +90,8 @@ class Home extends React.Component<HomeProps, State> {
 								<input className="Search__Input" type="text" placeholder="Search for a patient" />
 							</div>
 						</section>
-						<section className="Patient__Section">
-							<div className="Patient__Content__Container">
-								<div className="Patient__Item">
-									<div className="Image__Container">
-										<img className="Image" src={placeholderImage} />
-									</div>
-									<div className="Text__Container">
-										<label className="Patient__Name">Nic</label>
-										<label className="Last__Message">
-											Hey there, I am going to type a long message here to make sure everything
-											works as expected.
-										</label>
-									</div>
-									<div className="Time__Container">
-										<label className="Time">15:46</label>
-									</div>
-								</div>
-							</div>
+						<section className="PatientList__Section">
+							<div className="PatientList__Content__Container">{patientListItems}</div>
 						</section>
 					</section>
 					<section className="Content__Right">

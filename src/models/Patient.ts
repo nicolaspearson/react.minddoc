@@ -1,5 +1,6 @@
 import { Address } from '@models/Address';
 import { EmergencyContact } from '@models/EmergencyContact';
+import { Message } from '@models/Message';
 
 export interface Patient {
 	firstName: string;
@@ -16,4 +17,6 @@ export interface Patient {
 	online: boolean;
 	linked: boolean;
 	messages: string[];
+	parsedMessages?: Message[];
+	lastMessage?: Message;
 }
