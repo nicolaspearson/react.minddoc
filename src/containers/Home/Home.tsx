@@ -6,6 +6,7 @@ import Button from '@components/ui/Button';
 import Card from '@components/ui/Card';
 
 import overflowImage from '@assets/images/svg/overflow.svg';
+import placeholderImage from '@assets/images/svg/placeholder.svg';
 import refreshImage from '@assets/images/svg/refresh.svg';
 
 import './style.scss';
@@ -44,8 +45,24 @@ class Home extends React.Component<{}, State> {
 								<input className="Search__Input" type="text" placeholder="Search for a user" />
 							</div>
 						</section>
-						<section className="Profile__Section">
-							<div />
+						<section className="Patient__Section">
+							<div className="Patient__Content__Container">
+								<div className="Patient__Item">
+									<div className="Image__Container">
+										<img className="Image" src={placeholderImage} />
+									</div>
+									<div className="Text__Container">
+										<label className="Patient__Name">Nic</label>
+										<label className="Last__Message">
+											Hey there, I am going to type a long message here to make sure everything
+											works as expected.
+										</label>
+									</div>
+									<div className="Time__Container">
+										<label className="Time">15:46</label>
+									</div>
+								</div>
+							</div>
 						</section>
 					</section>
 					<section className="Content__Right">
