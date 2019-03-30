@@ -14,6 +14,7 @@ The web app is responsive and retrieves a list a patients.
 
 - Explain features provided.
 - Justification for technical decisions.
+- Handle error states.
 
 ## Getting Started
 

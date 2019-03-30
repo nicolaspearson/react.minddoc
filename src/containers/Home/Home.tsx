@@ -23,13 +23,15 @@ export interface HomeProps {
 
 interface State {
 	initialLoad: boolean;
+	searchInputValue: string;
 }
 
 @inject(StoreNames.PATIENT)
 @observer
 class Home extends React.Component<HomeProps, State> {
 	public state: State = {
-		initialLoad: true
+		initialLoad: true,
+		searchInputValue: ''
 	};
 
 	public async componentDidMount() {
@@ -47,11 +49,19 @@ class Home extends React.Component<HomeProps, State> {
 		await this.loadData();
 	};
 
+	private handleSearchInputChange = (event: any) => {
+		this.setState({ searchInputValue: event.target.value });
+	};
+
 	private renderPatientListItems = (): JSX.Element[] => {
 		const items: JSX.Element[] = [];
 		if (this.props.patientStore) {
 			let index: number = 0;
-			for (const patient of this.props.patientStore.dataList) {
+			const filteredPatients = this.props.patientStore.dataList.filter(
+				(patient) =>
+					patient.firstName.toUpperCase().indexOf(this.state.searchInputValue.toUpperCase()) > -1
+			);
+			for (const patient of filteredPatients) {
 				index++;
 				const item: JSX.Element = <PatientListItem key={index} patient={patient} />;
 				items.push(item);
@@ -87,7 +97,13 @@ class Home extends React.Component<HomeProps, State> {
 						</section>
 						<section className="Search__Section">
 							<div className="Search__Input__Container">
-								<input className="Search__Input" type="text" placeholder="Search for a patient" />
+								<input
+									className="Search__Input"
+									type="text"
+									placeholder="Search for a patient"
+									onChange={this.handleSearchInputChange}
+									value={this.state.searchInputValue}
+								/>
 							</div>
 						</section>
 						<section className="PatientList__Section">
