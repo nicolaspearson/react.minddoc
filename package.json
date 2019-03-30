@@ -35,16 +35,16 @@
 	"devDependencies": {
 		"@babel/plugin-proposal-decorators": "~7.4.0",
 		"@craco/craco": "~3.6.0",
-		"@types/enzyme": "~3.9.0",
+		"@types/enzyme": "~3.9.1",
 		"@types/enzyme-adapter-react-16": "~1.0.5",
 		"@types/classnames": "~2.2.7",
 		"@types/jest": "~23.3.13",
-		"@types/node": "~11.12.1",
+		"@types/node": "~11.12.2",
 		"@types/react": "~16.8.10",
 		"@types/react-dom": "~16.8.3",
 		"dotenv": "~7.0.0",
 		"enzyme": "~3.9.0",
-		"enzyme-adapter-react-16": "~1.10.0",
+		"enzyme-adapter-react-16": "~1.11.2",
 		"enzyme-to-json": "~3.3.5",
 		"jest": "~23.6.0",
 		"prettier": "~1.16.4",
@@ -53,7 +53,7 @@
 		"tslint": "~5.14.0",
 		"tslint-config-prettier": "~1.18.0",
 		"tslint-react": "~4.0.0",
-		"typescript": "~3.3.4000",
+		"typescript": "~3.4.1",
 		"webpackbar": "~3.1.5"
 	},
 	"browserslist": [

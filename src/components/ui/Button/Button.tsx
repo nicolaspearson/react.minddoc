@@ -12,14 +12,14 @@ export interface ButtonProps {
 }
 
 const Button = (props: ButtonProps) => {
+	const { primary } = props;
 	return (
 		<button
 			className={classnames('Button__Main', props.className, {
-				Primary__Button: props.primary
+				Primary__Button: primary
 			})}
 			style={props.style}
 			onClick={props.onClick}
-			{...props}
 		>
 			{props.children}
 		</button>

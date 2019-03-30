@@ -7,7 +7,6 @@ import { RouteNames } from '@enums/RouteNames';
 import { RouterStore } from '@store/RouterStore';
 
 import './style.scss';
-
 export interface ErrorBoundaryProps {
 	children?: any;
 	routerStore?: RouterStore;

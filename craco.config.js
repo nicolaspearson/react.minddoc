@@ -7,63 +7,6 @@ module.exports = {
 			['@babel/plugin-proposal-decorators', { legacy: true }] // MobX
 		]
 	},
-	jest: {
-		configure: {
-			moduleNameMapper: {
-				'^@assets(.*)$': '<rootDir>/src/assets$1',
-				'^@components(.*)$': '<rootDir>/src/components$1',
-				'^@containers(.*)$': '<rootDir>/src/containers$1',
-				'^@enums(.*)$': '<rootDir>/src/enums$1',
-				'^@logger(.*)$': '<rootDir>/src/logger$1',
-				'^@models(.*)$': '<rootDir>/src/models$1',
-				'^@pages(.*)$': '<rootDir>/src/pages$1',
-				'^@router(.*)$': '<rootDir>/src/router$1',
-				'^@store(.*)$': '<rootDir>/src/store$1',
-				'^@styles(.*)$': '<rootDir>/src/styles$1',
-				'^@utils(.*)$': '<rootDir>/src/utils$1'
-			}
-		}
-	},
-	style: {
-		modules: {
-			localIdentName: ''
-		},
-		css: {
-			loaderOptions: {
-				/* Any css-loader configuration options: https://github.com/webpack-contrib/css-loader. */
-			},
-			loaderOptions: (cssLoaderOptions, { env, paths }) => {
-				return cssLoaderOptions;
-			}
-		},
-		sass: {
-			loaderOptions: {
-				/* Any sass-loader configuration options: https://github.com/webpack-contrib/sass-loader. */
-			},
-			loaderOptions: (sassLoaderOptions, { env, paths }) => {
-				return sassLoaderOptions;
-			}
-		},
-		postcss: {
-			mode: 'extends' /* (default value) */ || 'file',
-			plugins: [],
-			env: {
-				autoprefixer: {
-					/* Any autoprefixer options: https://github.com/postcss/autoprefixer#options */
-				},
-				stage: 3 /* Any valid stages: https://cssdb.org/#staging-process. */,
-				features: {
-					/* Any CSS features: https://preset-env.cssdb.org/features. */
-				}
-			},
-			loaderOptions: {
-				/* Any postcss-loader configuration options: https://github.com/postcss/postcss-loader. */
-			},
-			loaderOptions: (postcssLoaderOptions, { env, paths }) => {
-				return postcssLoaderOptions;
-			}
-		}
-	},
 	webpack: {
 		alias: {
 			'@assets': path.resolve(__dirname, 'src/assets'),
