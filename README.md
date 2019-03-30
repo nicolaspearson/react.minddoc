@@ -1,5 +1,7 @@
 # React MindDoc
 
+[![Build Status](https://travis-ci.org/nicolaspearson/react.minddoc.svg?branch=master)](https://travis-ci.org/nicolaspearson/react.minddoc)
+
 A demo React app for MindDoc built using Typescript, MobX, SASS, and Webpack. It leverages [Create React App Configuration Override](https://github.com/sharegate/craco) in order to provide custom build functionality.
 
 The web app is responsive and retrieves a list a patients.
