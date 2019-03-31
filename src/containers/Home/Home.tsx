@@ -6,6 +6,7 @@ import Page from '@components/structural/Page';
 import Button from '@components/ui/Button';
 import Card from '@components/ui/Card';
 import PatientListItem from '@components/ui/PatientListItem';
+import PatientProfile from '@components/ui/PatientProfile';
 import Tab from '@components/ui/Tab';
 import Tabs from '@components/ui/Tabs';
 
@@ -179,7 +180,13 @@ class Home extends React.Component<HomeProps, State> {
 						) : (
 							<section>
 								<Tabs>
-									<Tab label="Profile">Show Profile Details</Tab>
+									<Tab label="Profile">
+										<div>
+											<label>
+												<PatientProfile patient={this.state.selectedPatient} />
+											</label>
+										</div>
+									</Tab>
 									<Tab label="Messages">Show Messages</Tab>
 								</Tabs>
 							</section>
