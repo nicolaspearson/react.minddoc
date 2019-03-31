@@ -19,8 +19,10 @@ class Tabs extends React.Component<TabsProps, State> {
 
 	constructor(props: TabsProps) {
 		super(props);
+		const activeTab: string =
+			props.children && props.children.length > 0 ? props.children[0].props.label : '';
 		this.state = {
-			activeTab: this.props.children[0].props.label
+			activeTab
 		};
 	}
 

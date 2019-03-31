@@ -6,19 +6,15 @@ export interface ImageWrapperProps {
 	alt?: string;
 	className: string;
 	src?: string;
-	render: boolean;
 }
 
-const ImageWrapper = (props: ImageWrapperProps) =>
-	props.render ? (
-		<React.Suspense
-			fallback={<img className={props.className} src={placeholderImage} alt={props.alt} />}
-		>
-			<Img alt={props.alt} className={props.className} src={props.src} />
-		</React.Suspense>
-	) : (
-		<section />
-	);
+const ImageWrapper = (props: ImageWrapperProps) => (
+	<React.Suspense
+		fallback={<img className={props.className} src={placeholderImage} alt={props.alt} />}
+	>
+		<Img alt={props.alt} className={props.className} src={props.src} />
+	</React.Suspense>
+);
 
 const Img = ({ src, alt, className }: { src: any; alt: any; className: string }) => {
 	return (

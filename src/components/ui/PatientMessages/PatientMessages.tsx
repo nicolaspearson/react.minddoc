@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import moment from 'moment';
 import React from 'react';
 
+import Logo from '@components/icon/Logo';
 import ImageWrapper from '@components/ui/ImageWrapper';
 import { Message } from '@models/Message';
 import { Patient } from '@models/Patient';
@@ -107,7 +108,19 @@ class PatientMessages extends React.Component<PatientMessagesProps, State> {
 	public render() {
 		return (
 			<section className="PatientMessages__Main">
-				<section className="Message__List">{this.renderMessageList()}</section>
+				{this.state.messages.length < 1 ? (
+					<section className="Empty__Section">
+						<Logo />
+						<h1 className="Empty__Message">No Messages</h1>
+						<h2 className="Empty__Detail">
+							You have not chatted to this patient yet,
+							<br />
+							type a message below to get started!
+						</h2>
+					</section>
+				) : (
+					<section className="Message__List">{this.renderMessageList()}</section>
+				)}
 				<form className="New__Message" onSubmit={this.handleSubmit}>
 					<input
 						className="New__Message__Input"

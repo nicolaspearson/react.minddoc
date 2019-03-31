@@ -27,7 +27,6 @@ const PatientListItem = (props: PatientListItemProps) => {
 				<ImageWrapper
 					className="Circle__Image"
 					alt={`${patient.firstName} ${patient.lastName}`}
-					render={true}
 					src={patient.profilePicture}
 				/>
 				<span className={patient.online ? 'Status__Online' : 'Status__Offline'} />

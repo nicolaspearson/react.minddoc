@@ -9,6 +9,7 @@
 	height: 65px;
 	font-size: 14px;
 	border-bottom: 2px solid $color-transparent;
+	background: $color-white;
 	text-align: center;
 
 	&:hover {
@@ -20,6 +21,5 @@
 
 .Tab__Item__Active {
 	border-bottom: 2px solid $primary-color;
-	background: $color-white;
 	color: $primary-color;
 }
