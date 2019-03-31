@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tab from '@components/structural/Tab';
+import Tab from '@components/ui/Tab';
 
 import './style.scss';
 

@@ -3,11 +3,11 @@ import React from 'react';
 
 import Logo from '@components/icon/Logo';
 import Page from '@components/structural/Page';
-import Tab from '@components/structural/Tab';
-import Tabs from '@components/structural/Tabs';
 import Button from '@components/ui/Button';
 import Card from '@components/ui/Card';
 import PatientListItem from '@components/ui/PatientListItem';
+import Tab from '@components/ui/Tab';
+import Tabs from '@components/ui/Tabs';
 
 import OverflowMenu from '@containers/OverflowMenu';
 
