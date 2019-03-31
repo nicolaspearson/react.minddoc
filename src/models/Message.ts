@@ -3,4 +3,5 @@ export interface Message {
 	read: boolean;
 	date: string;
 	formattedDate: Date;
+	type?: number;
 }

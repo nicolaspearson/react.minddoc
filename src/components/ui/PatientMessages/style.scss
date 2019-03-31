@@ -1,0 +1,124 @@
+@import '@styles/colors.scss';
+@import '@styles/functions.scss';
+
+.PatientMessages__Main {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	position: relative;
+	background: $color-white;
+
+	.Message__List {
+		height: calc(100vh - 152px);
+		width: 100%;
+		overflow-y: scroll;
+		padding: 0px 20px;
+		margin-bottom: 45px;
+	}
+
+	.Profile__Image {
+		width: 45px;
+		height: 45px;
+		justify-self: center;
+		align-self: center;
+		border-radius: 50%;
+		background: $color-light-gray;
+	}
+
+	.Bubble__Container {
+		display: flex;
+		align-items: center;
+		margin-top: 8px;
+		margin-bottom: 8px;
+		font-size: 14px;
+	}
+
+	.Bubble__Direction__Reverse {
+		flex-direction: row-reverse;
+	}
+
+	.Bubble {
+		display: flex;
+		flex-direction: column;
+		padding: 10px 18px;
+		position: relative;
+		word-wrap: break-word;
+		border-radius: 5px;
+	}
+
+	.Bubble__Left {
+		background-color: $color-light-gray;
+		color: $color-font-medium;
+		margin-left: 10px;
+		margin-right: 60px;
+	}
+
+	.Bubble__Right {
+		background-color: tint($primary-color, 80);
+		color: $color-font-medium;
+		margin-left: 60px;
+		margin-right: 10px;
+	}
+
+	.New__Message {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 45px;
+		margin: 0;
+		background: $color-light-gray;
+		border-top: 1px solid $color-default-border;
+	}
+
+	.New__Message__Input {
+		width: 95%;
+		height: 70%;
+		justify-self: center;
+		text-align: left;
+		font-size: 12px;
+		color: $color-font-medium;
+		align-self: center;
+		border-width: 0px;
+		border-image: initial;
+		border-radius: 18px;
+		padding: 0px 15px;
+		background: $color-white;
+		outline: none;
+
+		&::placeholder {
+			color: $color-placeholder;
+		}
+	}
+
+	.Message__Text {
+		word-wrap: break-word;
+		overflow: hidden;
+	}
+
+	.Message__Time {
+		margin-bottom: -4px;
+		font-size: 0.7em;
+		align-self: end;
+		justify-self: end;
+		color: $color-font-medium;
+	}
+
+	.Read__Status {
+		margin-top: 4px;
+		padding-left: 4px;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.PatientMessages__Main {
+		.Message__List {
+			height: calc(100vh - 112px);
+		}
+	}
+}

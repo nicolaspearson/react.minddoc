@@ -36,43 +36,45 @@ function getEmergencyContact(patient: Patient): string {
 
 const PatientProfile = (props: PatientProfileProps) => {
 	return (
-		<div className="PatientProfile__Main">
+		<section className="PatientProfile__Main">
 			<label className="Title">{getTitle(props.patient)}</label>
 			<table>
-				<tr>
-					<td className="Detail__Label">Gender:</td>
-					<td className="Detail__Value">{props.patient.gender}</td>
-				</tr>
-				<tr>
-					<td className="Detail__Label">Phone Number:</td>
-					<td className="Detail__Value">{props.patient.phoneNumber}</td>
-				</tr>
-				<tr>
-					<td className="Detail__Label">Address:</td>
-					<td className="Detail__Value">{getAddress(props.patient)}</td>
-				</tr>
-				<tr>
-					<td className="Detail__Label">Date Of Birth:</td>
-					<td className="Detail__Value">{getDateOfBirth(props.patient)}</td>
-				</tr>
-				<tr>
-					<td className="Detail__Label">Insurance Number:</td>
-					<td className="Detail__Value">{props.patient.insuranceNumber}</td>
-				</tr>
-				<tr>
-					<td className="Detail__Label">Diagnosis:</td>
-					<td className="Detail__Value">{getDiagnosis(props.patient)}</td>
-				</tr>
-				<tr>
-					<td className="Detail__Label">Treatment Type:</td>
-					<td className="Detail__Value">{props.patient.treatmentType}</td>
-				</tr>
-				<tr>
-					<td className="Detail__Label">Emergency Contact:</td>
-					<td className="Detail__Value">{getEmergencyContact(props.patient)}</td>
-				</tr>
+				<tbody>
+					<tr>
+						<td className="Detail__Label">Gender:</td>
+						<td className="Detail__Value">{props.patient.gender}</td>
+					</tr>
+					<tr>
+						<td className="Detail__Label">Phone Number:</td>
+						<td className="Detail__Value">{props.patient.phoneNumber}</td>
+					</tr>
+					<tr>
+						<td className="Detail__Label">Address:</td>
+						<td className="Detail__Value">{getAddress(props.patient)}</td>
+					</tr>
+					<tr>
+						<td className="Detail__Label">Date Of Birth:</td>
+						<td className="Detail__Value">{getDateOfBirth(props.patient)}</td>
+					</tr>
+					<tr>
+						<td className="Detail__Label">Insurance Number:</td>
+						<td className="Detail__Value">{props.patient.insuranceNumber}</td>
+					</tr>
+					<tr>
+						<td className="Detail__Label">Diagnosis:</td>
+						<td className="Detail__Value">{getDiagnosis(props.patient)}</td>
+					</tr>
+					<tr>
+						<td className="Detail__Label">Treatment Type:</td>
+						<td className="Detail__Value">{props.patient.treatmentType}</td>
+					</tr>
+					<tr>
+						<td className="Detail__Label">Emergency Contact:</td>
+						<td className="Detail__Value">{getEmergencyContact(props.patient)}</td>
+					</tr>
+				</tbody>
 			</table>
-		</div>
+		</section>
 	);
 };
 

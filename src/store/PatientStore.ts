@@ -76,6 +76,9 @@ export class PatientStore {
 					const message: Message = { ...JSON.parse(raw) };
 					// Create a formatted that we can use
 					message.formattedDate = moment(message.date).toDate();
+					// Set the message type to 0 in order for to
+					//  appear on the right of the message list
+					message.type = 0;
 					patient.parsedMessages.push(message);
 				}
 				// Sort the messages from newest to oldest
