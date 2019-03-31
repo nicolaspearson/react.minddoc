@@ -5,16 +5,16 @@
 		display: flex;
 		flex: 1;
 		flex-direction: column;
-		font-size: 18px;
+		font-size: 24px;
 		font-weight: 700;
-		padding-bottom: 20px;
+		padding: 20px 0px;
 		text-align: center;
 	}
 
 	table {
 		font-family: arial, sans-serif;
 		border-collapse: collapse;
-		width: 80%;
+		width: 100%;
 		margin: 0 auto;
 	}
 
@@ -30,9 +30,13 @@
 
 	.Detail__Label {
 		width: 50%;
+		color: $primary-color;
+		text-align: right;
 	}
 
 	.Detail__Value {
 		width: 50%;
+		color: $color-font-medium;
+		text-transform: capitalize;
 	}
 }

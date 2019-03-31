@@ -9,6 +9,10 @@ export interface PatientProfileProps {
 	patient: Patient;
 }
 
+function getTitle(patient: Patient): string {
+	return `${patient.firstName} ${patient.lastName}`;
+}
+
 function getAddress(patient: Patient): string {
 	const { address } = patient;
 	return `${address.number || ''} ${address.street}, ${address.city}, ${address.zip}`;
@@ -17,6 +21,10 @@ function getAddress(patient: Patient): string {
 function getDateOfBirth(patient: Patient): string {
 	const { dateOfBirth } = patient;
 	return moment(dateOfBirth).format('YYYY/MM/DD');
+}
+
+function getDiagnosis(patient: Patient): string {
+	return `${patient.diagnosis.split(/(?=[A-Z])/).join(' ')}`;
 }
 
 function getEmergencyContact(patient: Patient): string {
@@ -29,7 +37,7 @@ function getEmergencyContact(patient: Patient): string {
 const PatientProfile = (props: PatientProfileProps) => {
 	return (
 		<div className="PatientProfile__Main">
-			<label className="Title">{`${props.patient.firstName} ${props.patient.lastName}`}</label>
+			<label className="Title">{getTitle(props.patient)}</label>
 			<table>
 				<tr>
 					<td className="Detail__Label">Gender:</td>
@@ -53,7 +61,7 @@ const PatientProfile = (props: PatientProfileProps) => {
 				</tr>
 				<tr>
 					<td className="Detail__Label">Diagnosis:</td>
-					<td className="Detail__Value">{props.patient.diagnosis}</td>
+					<td className="Detail__Value">{getDiagnosis(props.patient)}</td>
 				</tr>
 				<tr>
 					<td className="Detail__Label">Treatment Type:</td>
