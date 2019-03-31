@@ -1,0 +1,66 @@
+@import '@styles/colors.scss';
+
+.Checkbox__Main {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 16px;
+	user-select: none;
+
+	/* Hide the browser's default checkbox */
+	.Checkbox__Input {
+		margin-right: 10px;
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	}
+
+	/* Create a custom checkbox */
+	.CheckMark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 25px;
+		width: 25px;
+		background-color: $color-checkmark-bg;
+	}
+
+	/* On mouse-over, add a grey background color */
+	&:hover input ~ .CheckMark {
+		background-color: $color-checkmark-bg-hover;
+	}
+
+	/* When the checkbox is checked, add a blue background */
+	input:checked ~ .CheckMark {
+		background-color: $color-checkmark-bg-checked;
+	}
+
+	/* Create the checkmark/indicator (hidden when not checked) */
+	.CheckMark:after {
+		content: '';
+		position: absolute;
+		display: none;
+	}
+
+	/* Show the checkmark when checked */
+	input:checked ~ .CheckMark:after {
+		display: block;
+	}
+
+	/* Style the checkmark / indicator */
+	.CheckMark:after {
+		left: 9px;
+		top: 5px;
+		width: 5px;
+		height: 10px;
+		border: solid $color-white;
+		border-width: 0 3px 3px 0;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+}

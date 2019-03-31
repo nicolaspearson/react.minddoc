@@ -28,6 +28,11 @@ $color-default-border: rgba(0, 0, 0, 0.05);
 $color-online: rgb(28, 182, 36);
 $color-offline: rgb(209, 33, 33);
 
+// Checkmark
+$color-checkmark-bg: #eee;
+$color-checkmark-bg-hover: #ccc;
+$color-checkmark-bg-checked: $primary-color;
+
 :export {
 	primaryColor: $primary-color;
 }

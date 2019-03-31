@@ -9,6 +9,8 @@ import Button from '@components/ui/Button';
 import Card from '@components/ui/Card';
 import PatientListItem from '@components/ui/PatientListItem';
 
+import OverflowMenu from '@containers/OverflowMenu';
+
 import { StoreNames } from '@enums/StoreNames';
 
 import { Patient } from '@models/Patient';
@@ -19,7 +21,6 @@ import overflowImage from '@assets/images/svg/overflow.svg';
 import refreshImage from '@assets/images/svg/refresh.svg';
 
 import './style.scss';
-
 export interface HomeProps {
 	patientStore?: PatientStore;
 }
@@ -28,6 +29,7 @@ interface State {
 	initialLoad: boolean;
 	searchInputValue: string;
 	selectedPatient?: Patient;
+	showOverflowMenu: boolean;
 }
 
 @inject(StoreNames.PATIENT)
@@ -36,7 +38,8 @@ class Home extends React.Component<HomeProps, State> {
 	public state: State = {
 		initialLoad: true,
 		searchInputValue: '',
-		selectedPatient: undefined
+		selectedPatient: undefined,
+		showOverflowMenu: false
 	};
 
 	public async componentDidMount() {
@@ -52,6 +55,23 @@ class Home extends React.Component<HomeProps, State> {
 	private handleRefreshClick = async () => {
 		this.setState({ initialLoad: false });
 		await this.loadData();
+	};
+
+	private handleOverflowClick = async () => {
+		this.setState({ showOverflowMenu: true });
+	};
+
+	private renderOverflowMenu = (): JSX.Element => {
+		return (
+			<div className="OverflowMenu__Container">
+				<OverflowMenu
+					onCloseOverflowMenu={() => this.setState({ showOverflowMenu: false })}
+					onFilterChange={() => {
+						// TODO: Re-render component
+					}}
+				/>
+			</div>
+		);
 	};
 
 	private handleSearchInputChange = (event: any) => {
@@ -115,11 +135,15 @@ class Home extends React.Component<HomeProps, State> {
 							<div className="Header__Content__Container">
 								<Logo className="Header__Logo" />
 								<img
-									className="Refresh__Button"
+									className="Header__Button"
 									src={refreshImage}
 									onClick={this.handleRefreshClick}
 								/>
-								<img className="Overflow__Button" src={overflowImage} />
+								<img
+									className="Header__Button"
+									src={overflowImage}
+									onClick={this.handleOverflowClick}
+								/>
 							</div>
 						</section>
 						<section className="Search__Section">
@@ -161,6 +185,7 @@ class Home extends React.Component<HomeProps, State> {
 							</section>
 						)}
 					</section>
+					{this.state.showOverflowMenu ? this.renderOverflowMenu() : undefined}
 				</Card>
 			</Page>
 		);

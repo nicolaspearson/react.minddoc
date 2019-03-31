@@ -9,6 +9,7 @@
 	height: 65px;
 	font-size: 14px;
 	border-bottom: 2px solid $color-transparent;
+	text-align: center;
 
 	&:hover {
 		background: tint($primary-color, 80);

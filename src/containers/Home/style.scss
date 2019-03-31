@@ -12,6 +12,14 @@
 		background-color: $color-white;
 	}
 
+	.OverflowMenu__Container {
+		position: fixed;
+		top: 49px;
+		left: 299px;
+		min-width: 100px;
+		height: 200px;
+	}
+
 	.Content__Left {
 		display: grid;
 		grid-template-rows: 65px 40px 1fr;
@@ -33,14 +41,13 @@
 					align-self: center;
 				}
 
-				.Refresh__Button {
+				.Header__Button {
 					justify-self: center;
 					align-self: center;
-				}
 
-				.Overflow__Button {
-					justify-self: center;
-					align-self: center;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 			}
 		}
@@ -106,6 +113,7 @@
 				font-weight: 700;
 				line-height: 1.5em;
 				margin: 10px;
+				text-align: center;
 			}
 
 			.Empty__Detail {
@@ -113,6 +121,7 @@
 				line-height: 24px;
 				font-size: 16px;
 				font-weight: 400;
+				text-align: center;
 			}
 
 			.Logo__Main {

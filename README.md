@@ -8,13 +8,13 @@
 
 A demo React app for MindDoc built using Typescript, MobX, SASS, and Webpack. It leverages [Create React App Configuration Override](https://github.com/sharegate/craco) in order to provide custom build functionality.
 
-The web app is responsive and retrieves a list a patients.
-
 ## TODO
 
 - Explain features provided.
 - Justification for technical decisions.
 - Handle error states.
+- Make the app responsive.
+- Add more details to read me.
 
 ## Getting Started
 

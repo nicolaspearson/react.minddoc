@@ -1,0 +1,24 @@
+@import '@styles/colors.scss';
+
+.OverflowMenu__Main {
+	background: $color-white;
+	border: 1px solid $color-default-border;
+	box-shadow: $color-default-border 0px 2px 4px;
+	padding: 10px 16px;
+
+	.Title {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		font-size: 18px;
+		font-weight: 700;
+		padding-bottom: 4px;
+		text-align: center;
+	}
+
+	.Filter__Menu {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+}
