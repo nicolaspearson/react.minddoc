@@ -24,7 +24,6 @@ module.exports = {
 			'@components': path.resolve(__dirname, 'src/components'),
 			'@containers': path.resolve(__dirname, 'src/containers'),
 			'@enums': path.resolve(__dirname, 'src/enums'),
-			'@logger': path.resolve(__dirname, 'src/logger'),
 			'@models': path.resolve(__dirname, 'src/models'),
 			'@router': path.resolve(__dirname, 'src/router'),
 			'@store': path.resolve(__dirname, 'src/store'),

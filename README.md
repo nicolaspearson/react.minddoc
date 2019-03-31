@@ -107,6 +107,7 @@ You can view the latest build status [here](https://travis-ci.org/nicolaspearson
 The features / tasks below still need to be completed.
 
 - Handle error states: Display proper error messages when we are unable to load data from the MindDoc API.
+- Refactor Home container: The Home container needs to be refactored into smaller components.
 - Make the app responsive: The app is **NOT** responsive at the moment, we can use CSS Grid, and media queries to achieve the desired functionality.
 - Complete integration tests: The existing can definitely be improved, currently they implement the minimal amount of testing, this is due to time constraints.
 - Complete unit tests: Complete writing the unit tests for the application.

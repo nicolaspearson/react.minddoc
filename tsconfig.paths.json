@@ -7,7 +7,6 @@
 			"@components/*": ["src/components/*"],
 			"@containers/*": ["src/containers/*"],
 			"@enums/*": ["src/enums/*"],
-			"@logger": ["src/logger/index"],
 			"@models/*": ["src/models/*"],
 			"@router/*": ["src/router/*"],
 			"@store/*": ["src/store/*"],

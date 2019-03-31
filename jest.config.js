@@ -34,7 +34,6 @@ module.exports = {
 		'^@components(.*)$': '<rootDir>/src/components$1',
 		'^@containers(.*)$': '<rootDir>/src/containers$1',
 		'^@enums(.*)$': '<rootDir>/src/enums$1',
-		'^@logger(.*)$': '<rootDir>/src/logger$1',
 		'^@models(.*)$': '<rootDir>/src/models$1',
 		'^@router(.*)$': '<rootDir>/src/router$1',
 		'^@store(.*)$': '<rootDir>/src/store$1',
