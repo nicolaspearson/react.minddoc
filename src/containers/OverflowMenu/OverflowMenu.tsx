@@ -1,7 +1,15 @@
+import { inject, observer } from 'mobx-react';
 import React from 'react';
 
 import Checkbox from '@components/ui/Checkbox';
+
+import { FilterNames } from '@enums/FilterNames';
+import { StoreNames } from '@enums/StoreNames';
+
 import { CheckboxItem } from '@models/CheckboxItem';
+import { Filter } from '@models/Filter';
+
+import { FilterStore } from '@store/FilterStore';
 
 import './style.scss';
 
@@ -9,42 +17,46 @@ const filters: CheckboxItem[] = [
 	{
 		key: 'linked',
 		label: 'Linked',
-		name: 'check-box-linked'
+		name: FilterNames.LINKED
 	},
 	{
 		key: 'online',
 		label: 'Online',
-		name: 'check-box-online'
+		name: FilterNames.ONLINE
 	},
 	{
 		key: 'unread',
 		label: 'Unread Messages',
-		name: 'check-box-unread'
+		name: FilterNames.UNREAD
 	}
 ];
 
 export interface OverflowMenuProps {
+	filterStore?: FilterStore;
 	onCloseOverflowMenu: () => void;
 	onFilterChange: () => void;
 }
 
-interface State {
-	checkedItems: Map<string, boolean>;
-}
-
-class OverflowMenu extends React.Component<OverflowMenuProps, State> {
-	public state: State = {
-		checkedItems: new Map()
-	};
-
+@inject(StoreNames.FILTER)
+@observer
+class OverflowMenu extends React.Component<OverflowMenuProps> {
 	private rootRef = React.createRef<HTMLDivElement>();
 
-	public componentWillMount() {
+	public componentDidMount() {
 		document.addEventListener('mousedown', this.handleOnClick, false);
 	}
 
 	public componentWillUnmount() {
 		document.removeEventListener('mousedown', this.handleOnClick, false);
+	}
+
+	private getStoreFilters(): Filter[] {
+		const { filterStore } = this.props;
+		// Get the filters from the store
+		if (filterStore) {
+			return filterStore.getFilters();
+		}
+		return [];
 	}
 
 	private handleOnClick = (event: any) => {
@@ -61,22 +73,31 @@ class OverflowMenu extends React.Component<OverflowMenuProps, State> {
 	};
 
 	private handleOnChange = (event: any) => {
-		const item = event.target.name;
+		const { filterStore } = this.props;
+		const filterName = event.target.name;
 		const isChecked = event.target.checked;
-		this.setState((prevState) => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
+		if (filterStore) {
+			// Update the item in the store
+			filterStore.updateFilterCheckedState(filterName, isChecked);
+		}
 	};
 
 	private renderFilters = (): JSX.Element[] => {
-		return filters.map((item) => (
-			<label key={item.key}>
-				<Checkbox
-					checked={this.state.checkedItems.get(item.name)}
-					label={item.label}
-					onChange={this.handleOnChange}
-					name={item.name}
-				/>
-			</label>
-		));
+		return filters.map((item) => {
+			const filterItem: Filter | undefined = this.getStoreFilters().find(
+				(filter) => filter.name === item.name
+			);
+			return (
+				<label key={item.key}>
+					<Checkbox
+						checked={filterItem ? filterItem.isChecked : false}
+						label={item.label}
+						onChange={this.handleOnChange}
+						name={item.name}
+					/>
+				</label>
+			);
+		});
 	};
 
 	public render() {

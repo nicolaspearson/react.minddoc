@@ -13,17 +13,22 @@ import Tabs from '@components/ui/Tabs';
 
 import OverflowMenu from '@containers/OverflowMenu';
 
+import { FilterNames } from '@enums/FilterNames';
 import { StoreNames } from '@enums/StoreNames';
 
+import { Filter } from '@models/Filter';
 import { Patient } from '@models/Patient';
 
+import { FilterStore } from '@store/FilterStore';
 import { PatientStore } from '@store/PatientStore';
 
 import overflowImage from '@assets/images/svg/overflow.svg';
 import refreshImage from '@assets/images/svg/refresh.svg';
 
 import './style.scss';
+
 export interface HomeProps {
+	filterStore?: FilterStore;
 	patientStore?: PatientStore;
 }
 
@@ -34,7 +39,7 @@ interface State {
 	showOverflowMenu: boolean;
 }
 
-@inject(StoreNames.PATIENT)
+@inject(StoreNames.FILTER, StoreNames.PATIENT)
 @observer
 class Home extends React.Component<HomeProps, State> {
 	public state: State = {
@@ -46,6 +51,9 @@ class Home extends React.Component<HomeProps, State> {
 
 	public async componentDidMount() {
 		await this.loadData();
+		if (this.props.filterStore) {
+			this.props.filterStore.buildFilters();
+		}
 	}
 
 	private loadData = async () => {
@@ -90,14 +98,62 @@ class Home extends React.Component<HomeProps, State> {
 		}
 	};
 
+	private getStoreFilters(): Filter[] {
+		const { filterStore } = this.props;
+		// Get the filters from the store
+		if (filterStore) {
+			return filterStore.getFilters();
+		}
+		return [];
+	}
+
+	private filterBySearch(patients: Patient[]) {
+		return patients.filter(
+			(patient) =>
+				patient.firstName.toUpperCase().indexOf(this.state.searchInputValue.toUpperCase()) > -1
+		);
+	}
+
+	private filterByLinked(patients: Patient[]) {
+		const foundFilter: Filter | undefined = this.getStoreFilters().find(
+			(filter) => filter.name === FilterNames.LINKED
+		);
+		if (foundFilter && foundFilter.isChecked) {
+			return patients.filter((patient) => patient.linked === true);
+		}
+		return patients;
+	}
+
+	private filterByOnline(patients: Patient[]) {
+		const foundFilter: Filter | undefined = this.getStoreFilters().find(
+			(filter) => filter.name === FilterNames.ONLINE
+		);
+		if (foundFilter && foundFilter.isChecked) {
+			return patients.filter((patient) => patient.online === true);
+		}
+		return patients;
+	}
+
+	private filterByUnread(patients: Patient[]) {
+		const foundFilter: Filter | undefined = this.getStoreFilters().find(
+			(filter) => filter.name === FilterNames.UNREAD
+		);
+		if (foundFilter && foundFilter.isChecked) {
+			return patients.filter((patient) => patient.lastUnreadMessage !== undefined);
+		}
+		return patients;
+	}
+
 	private renderPatientListItems = (): JSX.Element[] => {
 		const items: JSX.Element[] = [];
 		if (this.props.patientStore) {
+			// Apply filters
+			let filteredPatients: Patient[] = this.filterBySearch(this.props.patientStore.dataList);
+			filteredPatients = this.filterByLinked(filteredPatients);
+			filteredPatients = this.filterByOnline(filteredPatients);
+			filteredPatients = this.filterByUnread(filteredPatients);
+
 			let index: number = 0;
-			const filteredPatients = this.props.patientStore.dataList.filter(
-				(patient) =>
-					patient.firstName.toUpperCase().indexOf(this.state.searchInputValue.toUpperCase()) > -1
-			);
 			for (const patient of filteredPatients) {
 				index++;
 				const item: JSX.Element = (

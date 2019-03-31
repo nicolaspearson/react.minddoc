@@ -91,7 +91,7 @@ class PatientMessages extends React.Component<PatientMessagesProps, State> {
 
 			const item = (
 				<div key={index} className={classnames('Bubble__Container', bubbleDirection)}>
-					<ImageWrapper className="Profile__Image" alt="" render={true} src={profilePicture} />
+					<ImageWrapper className="Profile__Image" src={profilePicture} />
 					<div className={classnames('Bubble', bubbleClass)}>
 						<span className="Message__Text">{message.text}</span>
 						<section style={{ textAlign: 'right' }}>

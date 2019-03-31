@@ -2,6 +2,9 @@ import * as Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
+import { FilterStore } from '@store/FilterStore';
+import { RootStore } from '@store/RootStore';
+
 import OverflowMenu from './OverflowMenu';
 
 Enzyme.configure({
@@ -9,15 +12,25 @@ Enzyme.configure({
 });
 
 describe('OverflowMenu component', () => {
+	let store: RootStore;
+	let filterStore: FilterStore;
+
+	beforeEach(() => {
+		store = new RootStore();
+		filterStore = new FilterStore(store);
+	});
+
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
 	it('renders', () => {
 		const wrapper = Enzyme.shallow(
-			<div>
-				<OverflowMenu onCloseOverflowMenu={() => undefined} onFilterChange={() => undefined} />
-			</div>
+			<OverflowMenu
+				filterStore={filterStore}
+				onCloseOverflowMenu={() => undefined}
+				onFilterChange={() => undefined}
+			/>
 		);
 		expect(wrapper.exists()).toBe(true);
 		expect(wrapper.find('OverflowMenu')).toHaveLength(1);
@@ -25,7 +38,11 @@ describe('OverflowMenu component', () => {
 
 	it('renders snapshot correctly', () => {
 		const wrapper = Enzyme.shallow(
-			<OverflowMenu onCloseOverflowMenu={() => undefined} onFilterChange={() => undefined} />
+			<OverflowMenu
+				filterStore={filterStore}
+				onCloseOverflowMenu={() => undefined}
+				onFilterChange={() => undefined}
+			/>
 		);
 		expect(wrapper).toMatchSnapshot();
 	});
@@ -33,7 +50,11 @@ describe('OverflowMenu component', () => {
 	it('should mount component', () => {
 		const wrapper = Enzyme.mount(
 			<div>
-				<OverflowMenu onCloseOverflowMenu={() => undefined} onFilterChange={() => undefined} />
+				<OverflowMenu
+					filterStore={filterStore}
+					onCloseOverflowMenu={() => undefined}
+					onFilterChange={() => undefined}
+				/>
 			</div>
 		);
 		expect(wrapper.children(OverflowMenu).length).toEqual(1);

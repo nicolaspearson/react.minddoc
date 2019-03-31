@@ -37,6 +37,7 @@ export class Main extends React.Component {
 		return (
 			<Provider
 				store={this.store}
+				filterStore={this.store.filterStore}
 				patientStore={this.store.patientStore}
 				routerStore={this.store.routerStore}
 			>
